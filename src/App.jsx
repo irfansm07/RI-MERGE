@@ -297,7 +297,8 @@ function Services() {
       const viewportWidth = el.clientWidth
       
       // Fixed width assumptions to avoid layout thrashing
-      const cardWidth = 400 
+      const isMobile = window.innerWidth <= 768
+      const cardWidth = isMobile ? 220 : 320
       const gap = 30 // Approximate gap
 
       cardsRef.current.forEach((card, i) => {
