@@ -456,7 +456,7 @@ input, textarea, select { font-family: inherit; outline: none; }
   height: 100%;
 }
 .service-card {
-  padding: 40px 32px; border-radius: 20px;
+  padding: 30px 24px; border-radius: 20px;
   background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
   @media (min-width: 768px) {
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -464,6 +464,8 @@ input, textarea, select { font-family: inherit; outline: none; }
   border: 1px solid rgba(255,255,255,0.08);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative; overflow: hidden;
+  height: 100%;
+  min-height: 380px;
   transform: translateZ(0); /* Hardware acceleration */
   display: flex; flex-direction: column;
 }
@@ -1253,8 +1255,8 @@ input, textarea, select { font-family: inherit; outline: none; }
   .stat { padding: 15px 20px; min-width: 140px; }
   .stat-number { font-size: 1.8rem; }
   .projects-grid { grid-template-columns: 1fr; gap: 20px; }
-  .service-carousel-item { flex: 0 0 220px; height: 320px; transition: transform 0.4s ease-out; } 
-  .services-carousel-spacer { flex: 0 0 calc(50vw - 110px - 10px); }
+  .service-carousel-item { flex: 0 0 260px; height: auto; min-height: 360px; transition: transform 0.4s ease-out; } 
+  .services-carousel-spacer { flex: 0 0 calc(50vw - 130px - 10px); }
   .service-card { backdrop-filter: none; background: rgba(255, 255, 255, 0.05); } /* Faster mobile cards */
   .about-card, .project-card { backdrop-filter: none; background: rgba(255, 255, 255, 0.05); } /* Faster mobile cards */
   .about-grid { grid-template-columns: 1fr; gap: 20px; }

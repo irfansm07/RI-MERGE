@@ -308,18 +308,25 @@ function Services() {
         const cardPos = (viewportWidth / 2) + (i * (cardWidth + gap)) - scrollLeft
         const dist = cardPos - (viewportWidth / 2)
         
+        const isMobile = window.innerWidth <= 768
         const maxDist = viewportWidth / 1.5
         let normalizedDist = dist / maxDist
         normalizedDist = Math.max(-1, Math.min(1, normalizedDist))
         
-        const rotateY = normalizedDist * -35 
-        const translateZ = Math.abs(normalizedDist) * -200
-        const translateX = normalizedDist * -50 
-        const scale = 1 - Math.abs(normalizedDist) * 0.15
-        const opacity = 1 - Math.abs(normalizedDist) * 0.6
-        
-        card.style.transform = `translate3d(${translateX}px, 0, ${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`
-        card.style.opacity = Math.max(0, opacity).toFixed(2)
+        if (isMobile) {
+          // Flat transitions for mobile to ensure maximum speed on Android
+          card.style.transform = `scale(${1 - Math.abs(normalizedDist) * 0.1})`
+          card.style.opacity = Math.max(0.4, 1 - Math.abs(normalizedDist) * 0.5).toFixed(2)
+        } else {
+          const rotateY = normalizedDist * -35 
+          const translateZ = Math.abs(normalizedDist) * -200
+          const translateX = normalizedDist * -50 
+          const scale = 1 - Math.abs(normalizedDist) * 0.15
+          const opacity = 1 - Math.abs(normalizedDist) * 0.6
+          
+          card.style.transform = `translate3d(${translateX}px, 0, ${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`
+          card.style.opacity = Math.max(0, opacity).toFixed(2)
+        }
         
         if (Math.abs(normalizedDist) < 0.2) {
           card.classList.add('focused')
